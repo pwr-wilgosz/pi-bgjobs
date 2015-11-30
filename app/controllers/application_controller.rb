@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def contact
     if params[:fix]
-      ContactMailer.delay.send_contact_message
+      ContactMailer.delay_for(1.second).send_contact_message
     else
       ContactMailer.send_contact_message.deliver_now!
     end

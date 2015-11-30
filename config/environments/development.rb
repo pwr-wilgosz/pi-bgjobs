@@ -37,6 +37,7 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
 
   config.action_mailer.delivery_method = :smtp
+  # config.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     :user_name => ENV['MAILTRAP_USERNAME'],
     :password => ENV['MAILTRAP_PASSWORD'],

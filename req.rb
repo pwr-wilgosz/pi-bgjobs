@@ -1,4 +1,4 @@
-#!/Users/sebastian/.rvm/rubies/ruby-2.1.1/bin/ruby
+#!/Users/sebastian/.rvm/rubies/ruby-2.2.2/bin/ruby
 
 # USAGE: ./req.rb 'http://pwr-bad.herokuapp.com/comments?limit=10' 5 '../data-server-cache-bad.csv' true
 
@@ -21,7 +21,7 @@ filename = ((ARGV[2] != nil) && (ARGV[2] != '')) ? ARGV[2] : "data.csv"
 CSV.open(filename, "w") do |csv|
   report = Benchmark.benchmark do |x|
     (iterations+1).times do |i|
-      report = (x.report{ Net::HTTP.post(url) })
+      report = (x.report{ Net::HTTP.get(url) })
       report = (report*100).to_a
       csv << [('%.3f' % report[5]).to_f] if i != 0
     end

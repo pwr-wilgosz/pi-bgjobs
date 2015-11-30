@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :articles
   post :contact, to: "application#contact"
   root 'articles#index'
+
 end

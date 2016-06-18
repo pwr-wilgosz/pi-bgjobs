@@ -21,6 +21,7 @@ filename = ((ARGV[2] != nil) && (ARGV[2] != '')) ? ARGV[2] : "data.csv"
 CSV.open(filename, "w") do |csv|
   report = Benchmark.benchmark do |x|
     (iterations+1).times do |i|
+      sleep(0.5)
       report = (x.report{ Net::HTTP.get(url) })
       report = (report*100).to_a
       csv << [('%.3f' % report[5]).to_f] if i != 0
